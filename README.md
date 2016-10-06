@@ -1,4 +1,4 @@
-**#** # FoundationMaker For Laravel 5.3
+# FoundationMaker For Laravel 5.3
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -10,7 +10,7 @@ FoundationMaker adds 16 new artisan commands, providing ready-made templates for
 
 Help **[Support FoundationMaker](#support-FoundationMaker)**.  
 
-**#** ## Install ##
+## Install ##
 
 Via Composer
 
@@ -26,9 +26,9 @@ Evercode1\FoundationMaker\FoundationMakerServiceProvider::class,
 
 ```
 
-**#** ## Usage
+## Usage
 
-**#** ## Summary
+## Summary
 
 With the **[make:master](#makemaster)** command, instantly create a layouts folder and master page that uses Elixir to manage versioned assets.
 
@@ -50,7 +50,7 @@ Minimal bootstrap is used, so you can easily modify and extend as you wish.
 With the **[make:templates](#maketemplates)** command, you can easily modify the templates that FoundationMaker uses, added your personalized touch to the code:
 
 
-**#** ## FoundationMaker Commands
+## FoundationMaker Commands
 
 FoundationMaker will install 16 artisan commands.
 
@@ -212,7 +212,7 @@ The  **[make:child-of](#makechild-of)** command also appends to the following fi
 
 It also modifies the parent model to include the relationship.  The slug option is available for this command as well.
 
-**#** ## Master Page Required For All Views
+## Master Page Required For All Views
 
 Please note:
 
@@ -224,7 +224,7 @@ If you don't use our **[make:master](#makemaster)** to create your master page, 
 * a master page in a folder named layouts in your views folder
 * the proper call to version assets using Elixir.
 
-**#** ## How to Learn FoundationMaker Commands
+## How to Learn FoundationMaker Commands
 
 To play around with FoundationMaker, and to learn quickly, we recommend installing a fresh build of Laravel with a working database connection.  Then run the **[make:master](#makemaster)**, which will provide your layouts folder and master page.
 
@@ -232,7 +232,7 @@ Next, run the **[make:assets](#makeassets)** command, which will set up the asse
 
 After you have your master page and assets, follow the **[make:foundation Workflow Example](#makefoundation-workflow-example)** in the next section.
 
-**#** ## make:foundation Workflow Example
+## make:foundation Workflow Example
 
 To fully understand the power of the **[make:foundation](#makefoundation)** command, let's walk through a typical use case.  For this, we will assume that you have a master page named master.blade.php in your layouts folder, which is in your views folder.
 
@@ -331,7 +331,7 @@ As you can see the workflow with the **[make:foundation](#makefoundation)** comm
 
 Also see the [tip for use with make:auth](#tip-for-use-with-makeauth) to see how you can use artisan's native make:auth command to set up all your auth views to extend the master page you have created with [make:master](#makemaster).
 
-**#** ## make:assets
+## make:assets
 
 ```
 php artisan make:master master MyProject
@@ -365,7 +365,7 @@ elixir(mix => {
 
 The make:assets command supplies you with everything you need to run the **[make:foundation](#makefoundation)** and the **[make:views](#makeviews)** commands.
 
-**#** ## make:master
+## make:master
 
 
 FoundationMaker's make:master command creates a layouts folder and places a master page and related files in it.
@@ -410,7 +410,7 @@ php artisan make:master master
 
 It will default to naming your app "Demo" in the bootstrap navbar-brand class, which will appear on your top nav.
 
-**#** ## Tip for use with make:auth
+## Tip for use with make:auth
 
 Here's a tip for using make:master with artisan's native make:auth command.  As you probably already know, the make:auth command will create all your auth views, extending a master page named app.blade.php.  You can easily use both commands.  
 
@@ -418,7 +418,7 @@ Run [make:master](#makemaster) first, but make sure you do not name your master 
 
 Please note that the make:auth command also creates a controller that returns the user to a specific page for logging in and registering, so you will have to modify that view as well if you want your generated master page extended there as well.
 
-**#** ## make:crud
+## make:crud
 
 ```
 php artisan make:crud Widget slug
@@ -448,7 +448,7 @@ Since we specified ‘slug’, it will include the code necessary to have slugs 
 
 You could then run the **[make:views](#makeviews)** command and have it functional, once you've migrated and seeded data or created a few records and run gulp.  
 
-**#** ## make:views
+## make:views
 
 The make views lets you quickly scaffold views for create, show, edit, and index, based on your input.
 
@@ -480,7 +480,7 @@ Please remember to run gulp after both the **[make:vies](#makeviews)** and the *
 
 If you wish to manipulate the templates being used by FoundationMaker, please run the **[make:templates](#maketemplates)** command.
 
-**#** ## make:foundation
+## make:foundation
 
 The make:foundation command has the following arguments:
 
@@ -527,7 +527,7 @@ make:foundation also appends to the following files:
 * ApiController (if it already exists)
 * components.js
 
-**#** ## make:templates
+## make:templates
 
 The signature of the command is as follows:
 
@@ -536,7 +536,7 @@ php artisan make:templates
 
 ```
 
-**#** ## make:parent-child
+## make:parent-child
 
 Sometimes we need to associate two models, the most common example being Category and
 Subcategory.  FoundationMaker's make:parent-child let's you create this relationship with a single
@@ -566,7 +566,7 @@ You also get a dropdown list of parent models, for example, categories, on the c
 
 This command, like the **[make:foundation](#makefoundation)** command, will create all the crud and views for you, you only need to run your migration, unit tests, and factory methods to populate them, and then run gulp to update the assets.  You can do this in under a minute.
 
-**#** ## make:child-of
+## make:child-of
 
 In cases where you have an existing model, and you want to create a foundation for a child model, you should use the make:child-of command.  The signature of the command is as follows:
 
@@ -584,7 +584,7 @@ php artisan make:child-of AutoMaker AutoPart master
 
 This would update the parent model, in this case AutoMaker, with the has many relationship and also create a foundation for AutoPart, which will include the belongs to relationship to AutoMaker.
 
-**#** ## make:templates
+## make:templates
 
 ```
 php artisan make:templates
@@ -597,9 +597,9 @@ You may also inject custom tokens into these templates by using the CustomTokens
 
  **[Custom Tokens](#customtokens)**
 
-**#** ## Remove Commands
+## Remove Commands
 
-**#** ## remove:master
+## remove:master
 
 ```
 php artisan remove:master
@@ -608,7 +608,7 @@ php artisan remove:master
 
 This command will remove your layouts folder and everything in it.
 
-**#** ## remove:foundation
+## remove:foundation
 
 ```
 php artisan remove:foundation {ModelName}
@@ -629,7 +629,7 @@ remove:foundation will remove the following:
 * routes
 
 
-**#** ## remove:crud
+## remove:crud
 
 This command will remove all of the crud files for the given model:
 
@@ -649,7 +649,7 @@ remove:crud will remove the following:
 * factory method
 * routes
 
-**#** ## remove:views
+## remove:views
 
 This command will remove all of the view files for the given model:
 
@@ -668,7 +668,7 @@ Remove:views  will remove the following:
 * Vue.js component
 * component call from components.js
 
-**#** ## remove:child-of
+## remove:child-of
 
 This command will remove all of the foundation files for the given parent and child:
 
@@ -696,18 +696,18 @@ remove:child-of will remove the following:
 * child routes
 * parent model relationship
 
-**#** ## remove:templates
+## remove:templates
 
 If you have used the **[make:templates](#maketemplates)** command to create the Templates folder in your app folder, you can use the **[remove:templates](#removetemplates)** command to remove the entire folder. 
 
 
-**#** ## Requirements For Views
+## Requirements For Views
 
 To use the **[make:views](#makeviews)** or **[make:foundation](#makefoundation)** command successfully, you need to have a master page. We recommend using our **[make:master](#makemaster)** command, it will give you a nice starting point for your project.
 
 You also need to have certain assets in place, which you can get by running the **[make:assets](#makeassets)** command and running gulp.
 
-**#** ## Tokens
+## Tokens
 
 Here is a list of tokens you may use in the custom templates:
 
@@ -765,7 +765,7 @@ The convention is 3 colons before and after the token.
 
 If you wish to use custom tokens that you make yourself, please see the next section.
 
-**#** ## Custom Tokens
+## Custom Tokens
 
 In addition to the tokens FoundationMaker ships with out of the box, you can define your own tokens, after you run the **[make:templates](#maketemplates)** command.
 
@@ -843,30 +843,30 @@ Route::resource('alpha-widget', 'AlphaWidgetController');
 ~~~~
 
 
-**#** ## Support FoundationMaker
+## Support FoundationMaker
 
 I hope you enjoy this plugin and find it useful.  I don’t have a donate button, but If you would like
 to support my work and learn more about Laravel, you can do so by buying one of
 my books, **[Laravel 5.3 For Beginners](https://leanpub.com/laravel-5-3-for-beginners)**,
 I really appreciate it.
 
-**#** ## Change log
+## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-**#** ## Contributing
+## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
 
-**#** ## Security
+## Security
 
 If you discover any security related issues, please email ikon321@yahoo.com instead of using the issue tracker.
 
-**#** ## Credits
+## Credits
 
 - [Bill Keck](https://github.com/evercode1)
 
-**#** ## License
+## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
