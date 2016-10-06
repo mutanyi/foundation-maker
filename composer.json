@@ -1,7 +1,7 @@
 {
     "name": "evercode1/foundation-maker",
     "type": "library",
-    "description": "Artisan Foundation Maker",
+    "description": "Foundation Maker Artisan Commands for Laravel 5.3",
     "keywords": [
         "evercode1",
         "foundation-maker"
@@ -17,8 +17,8 @@
         }
     ],
     "require": {
-        "illuminate/support": "~5.1",
-        "php" : "~5.6|~7.0"
+        "laravel/framework": "5.3.*",
+        "php": "^5.6.4 || ^7.0"
     },
 
     "autoload": {
