@@ -47,7 +47,7 @@ You also get the create, edit, and show views, instantly.  Here is what the crea
 
 Minimal bootstrap is used, so you can easily modify and extend as you wish.
 
-With the **[make:templates](#maketemplates)** command, you can easily modify the templates that FoundationMaker uses, added your personalized touch to the code:
+With the **[make:templates](#maketemplates)** command, you can easily modify the templates that FoundationMaker uses, addingng your personalized touch to the code:
 
 
 ## FoundationMaker Commands
