@@ -10,7 +10,7 @@ class MakeViews extends Command
 
     /**
      * The name and signature of the console command.
-     *
+     * Slug defaults to false.
      * @var string
      */
     protected $signature = 'make:views
