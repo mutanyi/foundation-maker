@@ -26,16 +26,45 @@ Evercode1\FoundationMaker\FoundationMakerServiceProvider::class,
 
 ```
 
+FoundationMaker has been built using Vue.js version 1.0.26.  With a fresh install of Laravel, you will get Vue 2, so you will have to change your package.json before running npm install.  You do not need to do this manually, you will get this when you run the **[make:assets](#makeassets)** command, which you will need to run to take advantage of FoundationMaker.
+
+```
+
+{
+ "private": true,
+ "scripts": {
+   "prod": "gulp --production",
+   "dev": "gulp watch"
+ },
+ "devDependencies": {
+   "bootstrap-sass": "^3.3.7",
+   "gulp": "^3.9.1",
+   "jquery": "^3.1.0",
+   "laravel-elixir": "^6.0.0-9",
+   "laravel-elixir-vue": "^0.1.4",
+   "laravel-elixir-webpack-official": "^1.0.2",
+   "lodash": "^4.14.0",
+   "vue": "^1.0.26",
+   "vue-resource": "^0.9.3"
+ }
+}
+
+
+```
+
+You should run npm install after you have run the **[make:assets](#makeassets)** command.
+
 ## Usage
 
 ## Summary
 
-With the **[make:master](#makemaster)** command, instantly create a layouts folder and master page that uses Elixir to manage versioned assets.
+See **[make:foundation Tutorial Example](#makefoundation-tutorial-example)** for a more extensive set of instructions.
+
+With the **[make:assets](#makeassets)** command, instantly create the assets managed by Elixir that you need to run all datagrids.   This should be done at the beginning, with a fresh install of Laravel.  After this is done, run npm install.
+
+With the **[make:master](#makemaster)** command, instantly create a layouts folder and master page that uses Elixir to manage versioned assets.  You will need to make the master page before making a foundation.  You can customize the master page after running the command.  Minimal bootstrap is used, so you can easily modify and extend as you wish.
 
 ![](layouts-folder.png)
-
-With the **[make:assets](#makeassets)** command, instantly create the assets managed by Elixir that you need to run all datagrids.  
-
 
 With the **[make:foundation](#makefoundation)** command, create a code foundation instantly and get a working datagrid, searchable, sortable, and paginated, written with vue.js:
 
@@ -47,8 +76,7 @@ You also get the create, edit, and show views, instantly.  Here is what the crea
 
 Minimal bootstrap is used, so you can easily modify and extend as you wish.
 
-With the **[make:templates](#maketemplates)** command, you can easily modify the templates that FoundationMaker uses, addingng your personalized touch to the code:
-
+With the **[make:templates](#maketemplates)** command, you can easily modify the templates that FoundationMaker uses, adding your personalized touch to the code.
 
 ## FoundationMaker Commands
 
@@ -65,6 +93,7 @@ FoundationMaker will install 16 artisan commands.
 * **[make:templates](#maketemplates)**
 * **[make:views](#makeviews)**
 
+
 8 remove commands:
 
 * **[remove:assets](#removeassets)**
@@ -75,6 +104,8 @@ FoundationMaker will install 16 artisan commands.
 * **[remove:parent-child](#removeparent-child)**
 * **[remove:templates](#removetemplates)**
 * **[remove:views](#removeviews)**
+
+
 
 Use **[make:master](#makemaster)** to create a master page, providing dependencies, which includes:
 
@@ -216,8 +247,7 @@ It also modifies the parent model to include the relationship.  The slug option 
 
 Please note:
 
-FoundationMaker templates assume you use and have a master page. If you don't already have a
-master page, we recommend using our **[make:master](#makemaster)** command, it will instantly create it for you.
+FoundationMaker templates assume you use and have a master page. We recommend using our **[make:master](#makemaster)** command, it will instantly create it for you.
 
 If you don't use our **[make:master](#makemaster)** to create your master page, then you need to make sure you have the following:
 
@@ -226,28 +256,24 @@ If you don't use our **[make:master](#makemaster)** to create your master page, 
 
 ## How to Learn FoundationMaker Commands
 
-To play around with FoundationMaker, and to learn quickly, we recommend installing a fresh build of Laravel with a working database connection.  Then run the **[make:master](#makemaster)**, which will provide your layouts folder and master page.
+To play around with FoundationMaker, and to learn quickly, we recommend installing a fresh build of Laravel with a working database connection. 
+
+Then follow the steps in the next section in the order that they are described.
+
+## make:foundation Tutorial Example
+
+To fully understand the power of the **[make:foundation](#makefoundation)** command, let's walk through a typical use case.  We will start with a fresh install of laravel, with a working database connection.
 
 Next, run the **[make:assets](#makeassets)** command, which will set up the assets you need to manage in Elixir, which allow us to easily create and manage data grid components in Vue.js.
 
-After you have your master page and assets, follow the **[make:foundation Workflow Example](#makefoundation-workflow-example)** in the next section.
-
-## make:foundation Workflow Example
-
-To fully understand the power of the **[make:foundation](#makefoundation)** command, let's walk through a typical use case.  For this, we will assume that you have a master page named master.blade.php in your layouts folder, which is in your views folder.
-
-To create that we recommend using our **[make:master](#makemaster)** command, it will supply you with everything you need to create a foundation.  Just give your master page a name and supply an optional name for your app, like so:
-
-```
-php artisan make:master master Demo
+Once you have that, from the command line, run:
 
 ```
 
-That would create a layouts folder in your views directory and create a master page named master.blade.php.  
+npm install
 
-You can use your own master page, if you choose, but it’s best to work with the one supplied by FoundationMaker, when you are just learning.
-
-Next, run the Next, run the **[make:assets](#makeassets)** command, which will set up the assets you need to manage in Elixir, which allow us to easily create and manage data grid components in Vue.js.
+```
+ 
 
 Then run gulp from the command line:
 
@@ -256,7 +282,25 @@ Then run gulp from the command line:
 gulp
 
 ```
-Please note that you only need to run the copy method once in your gulpfile.js file.  Once you have run gulp the first time and have copied your font assets, you can remove that line, so that your elixir method in gulpfile.js is as follows:
+Please note that you only need to run the copy method once in your gulpfile.js file:
+
+```
+
+elixir(mix => {
+   mix.sass(['app.scss', 'main.scss'], 'public/css/all.css')
+      .webpack('app.js').version(['css/all.css', 'js/app.js'])
+      .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/',
+            'public/fonts/bootstrap');
+
+});
+
+
+```  
+
+
+
+
+Once you have run gulp the first time and have copied your font assets, you can remove that line, so that your elixir method in gulpfile.js is as follows:
 
 ```
 
@@ -268,6 +312,18 @@ elixir(mix => {
 
 
 ```
+
+
+Next we need a master page in a layouts folder.  To create that we recommend using our **[make:master](#makemaster)** command, it will supply you with everything you need to create a foundation.  Just give your master page a name and supply an optional name for your app, like so:
+
+```
+php artisan make:master master Demo
+
+```
+
+That would create a layouts folder in your views directory and create a master page named master.blade.php.  
+
+You can use your own master page, if you choose, but it’s best to work with the one supplied by FoundationMaker, when you are just learning.
 
 Now we're ready to try the **[make:foundation](#makefoundation)** command.  We’ll use an example model named Widget.  So let's create a Widget foundation for our Widget model with the following command:
 
@@ -282,6 +338,7 @@ After the command runs, we're ready to migrate up to our db.  Before you migrate
 
 ```
 php artisan migrate
+
 ```
 
 Next, we run gulp on the command line:
@@ -334,7 +391,7 @@ Also see the [tip for use with make:auth](#tip-for-use-with-makeauth) to see how
 ## make:assets
 
 ```
-php artisan make:master master MyProject
+php artisan make:assets
 
 ```
 
@@ -344,13 +401,28 @@ This command modifies the following files:
 * bootstrap.js
 * app.js
 * app.scss
+* package.json
 
 It also creates the following files:
 
 * main.scss
 * components.js
 
-In your gulpfile.js, you will get a copy command on your elixir method for your font assets.  Once you run gulp once, you can remove that command, since you only need to copy the assets once.  After removing the copy method, it will look like this:
+In your gulpfile.js, you will get a copy command on your elixir method for your font assets.  
+
+```
+
+elixir(mix => {
+   mix.sass(['app.scss', 'main.scss'], 'public/css/all.css')
+      .webpack('app.js').version(['css/all.css', 'js/app.js'])
+      .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/',
+            'public/fonts/bootstrap');
+
+});
+
+```
+
+Once you run gulp once, you can remove that command, since you only need to copy the assets once.  After removing the copy method, it will look like this:
 
 ```
 
@@ -597,6 +669,7 @@ You may also inject custom tokens into these templates by using the CustomTokens
 
  **[Custom Tokens](#customtokens)**
 
+
 ## Remove Commands
 
 ## remove:master
@@ -607,6 +680,8 @@ php artisan remove:master
 ```
 
 This command will remove your layouts folder and everything in it.
+
+
 
 ## remove:foundation
 
@@ -707,6 +782,7 @@ To use the **[make:views](#makeviews)** or **[make:foundation](#makefoundation)*
 
 You also need to have certain assets in place, which you can get by running the **[make:assets](#makeassets)** command and running gulp.
 
+
 ## Tokens
 
 Here is a list of tokens you may use in the custom templates:
@@ -764,6 +840,7 @@ If you wish to embed a token in a template, which you can do after running the m
 The convention is 3 colons before and after the token.
 
 If you wish to use custom tokens that you make yourself, please see the next section.
+
 
 ## Custom Tokens
 
@@ -853,6 +930,7 @@ I really appreciate it.
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
 
 ## Contributing
 

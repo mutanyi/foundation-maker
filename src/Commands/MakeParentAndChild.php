@@ -27,14 +27,7 @@ class MakeParentAndChild extends Command
      *
      * @var string
      */
-    protected $description = 'create model, 
-                              migration, 
-                              route, 
-                              controller, 
-                              factory, 
-                              test, 
-                              component, 
-                              and views';
+    protected $description = 'create parent-child model, migration, route, controller, factory, test, component, and views';
 
 
 

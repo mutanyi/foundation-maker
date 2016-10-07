@@ -26,14 +26,7 @@ class MakeChildOf extends Command
      *
      * @var string
      */
-    protected $description = 'create child model, 
-                              migration, 
-                              route, 
-                              controller, 
-                              factory, 
-                              test, 
-                              component, 
-                              and views';
+    protected $description = 'create child model, migration, route, controller, factory, test, component, and views';
 
 
 
