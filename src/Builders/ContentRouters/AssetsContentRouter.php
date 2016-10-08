@@ -49,10 +49,6 @@ class AssetsContentRouter
 
                 break;
 
-            case 'package' :
-
-                return $this->routeTemplate('packageTemplate');
-
 
             default:
 

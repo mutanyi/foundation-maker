@@ -26,31 +26,7 @@ Evercode1\FoundationMaker\FoundationMakerServiceProvider::class,
 
 ```
 
-FoundationMaker has been built using Vue.js version 1.0.26.  With a fresh install of Laravel, you will get Vue 2, so you will have to change your package.json before running npm install.  You do not need to do this manually, you will get this when you run the **[make:assets](#makeassets)** command, which you will need to run to take advantage of FoundationMaker.
-
-```
-
-{
- "private": true,
- "scripts": {
-   "prod": "gulp --production",
-   "dev": "gulp watch"
- },
- "devDependencies": {
-   "bootstrap-sass": "^3.3.7",
-   "gulp": "^3.9.1",
-   "jquery": "^3.1.0",
-   "laravel-elixir": "^6.0.0-9",
-   "laravel-elixir-vue": "^0.1.4",
-   "laravel-elixir-webpack-official": "^1.0.2",
-   "lodash": "^4.14.0",
-   "vue": "^1.0.26",
-   "vue-resource": "^0.9.3"
- }
-}
-
-
-```
+FoundationMaker has been built using Vue.js version 2.0.1.  With a fresh install of Laravel, you will get Vue 2, so this will work, once we set our assets.  You do not need to do this manually, you will get this when you run the **[make:assets](#makeassets)** command, which you will need to run to take advantage of FoundationMaker.
 
 You should run npm install after you have run the **[make:assets](#makeassets)** command.
 
@@ -401,7 +377,6 @@ This command modifies the following files:
 * bootstrap.js
 * app.js
 * app.scss
-* package.json
 
 It also creates the following files:
 
@@ -494,6 +469,7 @@ Please note that the make:auth command also creates a controller that returns th
 
 ```
 php artisan make:crud Widget slug
+
 ```
 
 The make:crud command takes two arguments, the name of the model you wish to build your crud on and the optional slug parameter.  As typed above, the command would create the following file types:
@@ -958,6 +934,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-packagist]: https://packagist.org/packages/evercode1/foundation-maker
 [link-downloads]: https://packagist.org/packages/evercode1/foundation-maker/stats
 [link-author]: https://github.com/evercode1
-
-
-

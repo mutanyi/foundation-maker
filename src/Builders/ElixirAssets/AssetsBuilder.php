@@ -36,7 +36,7 @@ class AssetsBuilder
         $this->files['components'] = base_path('resources/assets/js/components.js');
         $this->files['main'] = base_path('resources/assets/sass/main.scss');
         $this->files['gulpfile'] = base_path('gulpfile.js');
-        $this->files['package'] = base_path('package.json');
+
 
     }
 

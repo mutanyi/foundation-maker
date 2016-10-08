@@ -14,6 +14,8 @@
 
 <body role="document">
 
+<div id="app">
+
     @include('layouts.nav')
 
     <div class="container theme-showcase" role="main">
@@ -23,6 +25,8 @@
     @include('layouts.bottom')
 
     </div> <!-- /container -->
+
+</div>
 
     @include('layouts.scripts')
 
