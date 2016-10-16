@@ -46,7 +46,7 @@ With the **[make:foundation](#makefoundation)** command, create a code foundatio
 
 ![](vue-index.png)
 
-You also get the create, edit, and show views, instantly.  Here is what the create view looks like:
+You also get create, edit, and show views, instantly.  Here is what the create view looks like:
 
 ![basic create view](basic-create.png)
 
