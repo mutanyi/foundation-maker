@@ -65,7 +65,9 @@
                 <!-- paginate here -->
 
                 <ul class="pagination pull-right">
-                    <li><a @click.prevent="getData(first_page_url)"> first </a></li>
+                    <li>
+                    <a @click.prevent="getData(first_page_url)"> first </a>
+                    </li>
                     <li v-if="checkUrlNotNull(prev_page_url)">
                         <a @click.prevent="getData(prev_page_url)" >prev</a>
                     </li>
