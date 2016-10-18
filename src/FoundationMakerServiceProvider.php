@@ -13,6 +13,7 @@ class FoundationMakerServiceProvider extends ServiceProvider
         'Evercode1\FoundationMaker\Commands\MakeChildOf',
         'Evercode1\FoundationMaker\Commands\MakeCrud',
         'Evercode1\FoundationMaker\Commands\MakeException',
+        'Evercode1\FoundationMaker\Commands\MakeExceptionHandler',
         'Evercode1\FoundationMaker\Commands\MakeFoundation',
         'Evercode1\FoundationMaker\Commands\MakeMasterPage',
         'Evercode1\FoundationMaker\Commands\MakeParentAndChild',

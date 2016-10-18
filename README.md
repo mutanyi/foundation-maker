@@ -6,7 +6,7 @@
 
 **FoundationMaker** is a code generator for use with the Laravel PHP framework (5.3 and up) Artisan command line tool.
 
-FoundationMaker adds 16 new artisan commands, providing ready-made templates for CRUD generation, Views and Datagrids, with ajax-powered search, column sorts and pagination.   You can create, migrate and test a foundation of code with crud and views in under a minute.  You can also make your own custom templates and tokens for use with FoundationMaker.
+FoundationMaker adds 17 new artisan commands, providing ready-made templates for CRUD generation, Views and Datagrids, with ajax-powered search, column sorts and pagination.   You can create, migrate and test a foundation of code with crud and views in under a minute.  You can also make your own custom templates and tokens for use with FoundationMaker.
 
 Help **[Support FoundationMaker](#support-foundationmaker)**.  
 
@@ -56,14 +56,15 @@ With the **[make:templates](#maketemplates)** command, you can easily modify the
 
 ## FoundationMaker Commands
 
-FoundationMaker will install 15 artisan commands.
+FoundationMaker will install 17 artisan commands.
 
-9 make commands:
+10 make commands:
 
 * **[make:assets](#makeassets)**
 * **[make:child-of](#makechild-of)**
 * **[make:crud](#makecrud)**
 * **[make:exception](#makeexception)**
+* **[make:exception-handler](#makeexception-handler)**
 * **[make:foundation](#makefoundation)**
 * **[make:master](#makemaster)**
 * **[make:parent-child](#makeparent-child)**
@@ -688,7 +689,7 @@ php artisan make:exception PaymentDeclined View
 
 In this case, you will get PaymentDeclinedException.php in your app/Exceptions folder and payment-declined.blade.php in your resources/views/errors folder.  Since we did not specify a master page name, it defaults to master.
 
-You need to add the exception manually to your Handler.php file.
+You need to add the exception manually to your Handler.php file.  You may use our * **[make:exception-handler](#makeexception-handler)** command to make a compatible Handler for this approach to exception handling.
 
 Also note, the view is written to expect the $e object passed to it, so you can include custom messages.  It will be included in the blade syntax as follows:
 
@@ -708,7 +709,35 @@ php artisan make:exception PaymentDeclined View
 
 ```
 
-Note that you do not need to add the word Exception to the name, it is added automatically.  
+Note that you do not need to add the word Exception to the name, it is added automatically.   
+
+## make:exception-handler
+
+This command will overwrite the native exception handler with Foundation Maker’s exception handler.
+
+```
+
+php artisan make:exception-handler
+
+```
+
+This command takes no arguments.  It will overwrite the existing file, so it is best used when setting up a new project.
+
+The Handler.php class is setup to render views and pass along the $e object, so that the view can take in a custom message.  The class utilizes a switch statement on exception type, making it easy to add exceptions.
+
+Note that when you are running the * **[make:exception(#makeexception)** command, you have to add the exceptions to the Handler manually, in both the render and renderException methods.  The renderException case statement would look like:
+
+~~~~
+
+case ($e instanceof YourCustomException):
+   
+   return response()->view('errors.your-custom', compact('e'));
+
+   Break;
+
+
+
+~~~~
 
 
 ## Remove Commands
@@ -1018,6 +1047,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-packagist]: https://packagist.org/packages/evercode1/foundation-maker
 [link-downloads]: https://packagist.org/packages/evercode1/foundation-maker/stats
 [link-author]: https://github.com/evercode1
-
-
-
