@@ -689,7 +689,7 @@ php artisan make:exception PaymentDeclined View
 
 In this case, you will get PaymentDeclinedException.php in your app/Exceptions folder and payment-declined.blade.php in your resources/views/errors folder.  Since we did not specify a master page name, it defaults to master.
 
-You need to add the exception manually to your Handler.php file.  You may use our * **[make:exception-handler](#makeexception-handler)** command to make a compatible Handler for this approach to exception handling.
+You need to add the exception manually to your Handler.php file.  You may use our **[make:exception-handler](#makeexception-handler)** command to make a compatible Handler for this approach to exception handling.
 
 Also note, the view is written to expect the $e object passed to it, so you can include custom messages.  It will be included in the blade syntax as follows:
 
@@ -725,7 +725,7 @@ This command takes no arguments.  It will overwrite the existing file, so it is 
 
 The Handler.php class is setup to render views and pass along the $e object, so that the view can take in a custom message.  The class utilizes a switch statement on exception type, making it easy to add exceptions.
 
-Note that when you are running the * **[make:exception(#makeexception)** command, you have to add the exceptions to the Handler manually, in both the render and renderException methods.  The renderException case statement would look like:
+Note that when you are running the **[make:exception](#makeexception)** command, you have to add the exceptions to the Handler manually, in both the render and renderException methods.  The renderException case statement would look like:
 
 ~~~~
 
